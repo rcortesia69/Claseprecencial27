@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @category.name %>
+</p>
+
+<div class="row">
+
+    <%= form_with(model: [@product, @category ], local: true) do |f| %>
+      <%= hidden_field_tag :category_id, @category.id %>
+        <div class="well">
+          <h2>Producto</h2>
+          <%= f.text_area :product %>
+        </div>
+        <div class="well">
+          <h2>Precio</h2>
+          <%= f.text_area :price %>
+          <%= f.submit :enviar %>
+        </div>
+    <% end %>
+
+</div>
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
